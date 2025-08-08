@@ -1,0 +1,217 @@
+/* Navbar text color fix */
+.navbar .nav_ul ul li a {
+    color: #1E2736; /* Using a dark color from the theme */
+}
+
+/* General Section Padding and Box Sizing */
+body {
+    min-height: 100vh; /* Use min-height to ensure footer is at bottom */
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container for main content to allow scrolling */
+/* The .container rule is defined in the global style.css, this one was causing issues. */
+
+/* Add gap between navbar and main content */
+.six.six_padding {
+    padding: 100px 0 80px; /* Added extra top padding for gap */
+    background-color: #f7faff;
+    flex: 1; /* Make the main content area expand */
+}
+
+/* Header Section Styling */
+.section_six_top {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section_six_titlebar .title p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px; /* Slightly larger font */
+    text-transform: uppercase;
+    color: #00A8FF;
+    letter-spacing: 1px;
+}
+
+.section_six_titlebar .title h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 48px; /* Increased font size for prominence */
+    color: #1E2736;
+    margin-top: 15px;
+}
+
+/* Grid container for notice categories */
+.notice-board-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(370px, 1fr)); /* Adjust to prevent overflow */
+    gap: 35px;
+    margin-bottom: 80px; /* Reduced margin to prevent footer overlap */
+}
+
+/* Styling for each category block */
+.notice-category {
+    background-color: #ffffff;
+    border: 1px solid #e0eaf1;
+    border-radius: 12px; /* Slightly round corners for a unique look */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    height: 100%;
+}
+
+.notice-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.08);
+    background-color: #f0f9ff; /* Light blue hover effect */
+}
+
+/* Notice list inside each category */
+.notice-list {
+    height: 300px; /* Reduce the height slightly to prevent overflow */
+    overflow-y: auto;
+    padding-right: 10px;
+    padding-bottom: 20px; /* Add extra space at the bottom */
+}
+
+/* Custom Scrollbar */
+.notice-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.notice-list::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+.notice-list::-webkit-scrollbar-thumb {
+    background: #00A8FF;
+    border-radius: 10px;
+}
+
+.notice-list::-webkit-scrollbar-thumb:hover {
+    background: #007bbd;
+}
+
+/* Individual notice card styling */
+.notice-card {
+    background: #fdfdfd;
+    border: 1px solid #E8E8E8;
+    border-left: 4px solid #00A8FF;
+    border-radius: 10px; /* Slightly larger border-radius for a unique look */
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.notice-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background-color: #fafafa; /* Light grey hover effect */
+}
+
+.notice-card h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #2c3e50;
+    margin-bottom: 12px;
+}
+
+.notice-card .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.notice-card .info .date,
+.notice-card .info .author {
+    display: flex;
+    align-items: center;
+}
+
+.notice-card .info i {
+    margin-right: 8px;
+    color: #aaa;
+}
+
+.notice-card .link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #00A8FF;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.notice-card .link:hover {
+    color: #007bbd;
+}
+
+.notice-card .link i {
+    margin-left: 5px;
+    transition: margin-left 0.3s ease;
+}
+
+.notice-card .link:hover i {
+    margin-left: 10px;
+}
+
+/* Footer styling to prevent overlap */
+.footer {
+    clear: both;
+    position: relative;
+    /* margin-top: 50px; -- Removed to let flexbox handle spacing */
+    z-index: 2;
+}
+
+/* Adjustments for the footer's visibility and spacing */
+.footer_wrap {
+    padding-bottom: 50px; /* Ensuring the footer content stays away from the bottom */
+}
+
+/* Extra gap between the footer and content area */
+footer#footer_id {
+    /* margin-top: 100px; -- Removed to let flexbox handle spacing */
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .notice-board-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .notice-board-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section_six_titlebar .title h2 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section_six_titlebar .title h2 {
+        font-size: 28px;
+    }
+
+    .notice-card h4 {
+        font-size: 16px;
+    }
+}

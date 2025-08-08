@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metropolitan University Form Fillup</title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="src/styles/loading_animation.css"/>
+</head>
+
+<body>
+
+    <div id="loader" class="loader-overlay">
+        <img src="./src/images/logo.png" alt="Loading..." class="loader-logo">
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="./src/logo.png" alt="Metropolitan University Logo">
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="./index.html">HOME</a></li>
+                    <li><a href="./course.html">DEPARTMENTS</a></li>
+                    <li><a href="./teachers.html">FACULTY</a></li>
+                    <li><a href="./notice.html">NOTICE</a></li>
+                    <li><a href="./contactUs.html">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <form>
+                <div class="form-grid">
+                    <div class="form-row">
+                        <label for="student_name">Student Name:</label>
+                        <input type="text" id="student_name" name="student_name" placeholder="e.g., John Doe">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="student_id">Student ID:</label>
+                        <input type="number" id="student_id" name="student_id" placeholder="e.g., 202101050XX">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="department">Department:</label>
+                        <input type="text" id="department" name="department" placeholder="e.g., Computer Science & Engineering">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="batch">Batch:</label>
+                        <input type="text" id="batch" name="batch" placeholder="e.g., 52nd">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="exam_type">Exam Type:</label>
+                        <select id="exam_type" name="exam_type">
+                            <option value="final">Final Exam</option>
+                            <option value="supplementary">Supplementary Exam</option>
+                        </select>
+                    </div>
+                </div>
+
+                <fieldset>
+                    <legend>Current Status</legend>
+                    <div class="radio-group">
+                        <label for="re-admission">
+                            <input type="radio" id="re-admission" name="status" value="re-admission">
+                            <span>Re-Admission</span>
+                        </label>
+                        <label for="current">
+                            <input type="radio" id="current" name="status" value="current">
+                            <span>Current One</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="buttons">
+                   <input type="reset" class="buttonsty">
+                   <button type="submit" class="buttonsty">Submit</button>
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Metropolitan University | For assistance, contact: info@mu.ac.bd</p>
+        </footer>
+    </div>
+
+    <script src="src/js/loading_animation.js"></script>
+</body>
+</html>

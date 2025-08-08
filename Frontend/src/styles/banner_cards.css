@@ -1,0 +1,70 @@
+.banner-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto; /* Center the banners and add vertical spacing */
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    max-width: 800px; /* Make them wider */
+    width: 90%;
+    border: 2px solid #0D5EF3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-card.show {
+    opacity: 1;
+    transform: translateY(0); /* Slide up to position */
+}
+
+.banner-card h3 {
+    color: #0D5EF3 !important;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.banner-card p {
+    color: #343A40 !important;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.banner-button {
+    background-color: #0D5EF3 !important;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.banner-button:hover {
+    background-color: #0A64BC !important;
+    transform: translateY(-2px);
+}
+
+.banner-button a {
+    color: white !important;
+    text-decoration: none;
+}
+
+.close-banner {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5em;
+    color: #6c757d;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-banner:hover {
+    color: #DC3545;
+}

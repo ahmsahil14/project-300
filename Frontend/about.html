@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metropolitan University - About Us</title>
+   <link rel="stylesheet" href="src/styles/review-css/owl.theme.default.min.css"/>
+  <link rel="stylesheet" href="src/styles/review-css/owl.carousel.min.css"/>
+  <link rel="stylesheet" href="src/styles/style.css" />
+  <link rel="stylesheet" href="src/styles/responsive/homepage.css"/>
+  <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f7;
+    color: #343a40;
+    }
+    /* Academic Calendar Section */
+    #academic-calendar {
+        padding: 80px 0;
+        text-align: center;
+        background-color: #f8f9fa;
+    }
+
+    .academic-calendar-wrap h2 {
+        font-size: 3rem;
+        margin-bottom: 40px;
+        color: #0056b3;
+        font-weight: 600;
+    }
+
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .calendar-header button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .calendar-header button:hover {
+        background: #0056b3;
+        transform: scale(1.1);
+    }
+
+    .calendar-header h3 {
+        margin: 0;
+        font-size: 2.2rem;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .calendar-day {
+        background: #fff;
+        border: 1px solid #e9ecef;
+        text-align: center;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+    }
+
+    .calendar-day.day-name {
+        background: transparent;
+        color: #007bff;
+        font-weight: 700;
+        border: none;
+        height: auto;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+
+    .calendar-day.empty {
+        background: #f0f2f5;
+        border: 1px solid #e9ecef;
+    }
+
+    .calendar-day.today {
+        background: #ffc107;
+        color: #fff;
+        font-weight: bold;
+        border-color: #ffc107;
+    }
+
+    .calendar-day.holiday {
+        background: #dc3545;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        font-weight: 600;
+    }
+
+    .calendar-day.holiday:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(220, 53, 69, 0.3);
+        background: #c82333;
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.6);
+        backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 40px;
+        border: none;
+        width: 90%;
+        max-width: 550px;
+        text-align: center;
+        border-radius: 12px;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .close-button {
+        color: #aaa;
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        font-size: 32px;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #modal-holiday-name {
+        font-size: 2.5rem;
+        color: #dc3545;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    #modal-holiday-date {
+        font-size: 1.3rem;
+        color: #6c757d;
+    }
+  </style>
+</head>
+
+<body class="about-us-page">
+  <!-- ---------- NAVBAR ---------- -->
+  <nav class="nav" id="nav_id">
+    <div class="container">
+      <div class="nav_wrap">
+        <div class="navbar">
+          <div class="logo">
+            <!-- <a href="index.html"> -->
+              <img src="./src/images/logo.png" alt="Metropolitan University Logo" />
+            </a>
+          </div>
+          <div class="nav_ul">
+            <ul>
+              <li><a href="./index.html">HOME</a></li>
+              <li><a href="./about.html">ABOUT US</a></li>
+              <li><a href="./course.html">DEPARTMENTS</a></li>
+              <li><a href="./teachers.html">FACULTY</a></li>
+              <li><a href="./notice.html">NOTICE</a></li>
+              <li><a href="./contactUs.html">CONTACT</a></li>
+              <li><a href="./studentportal.html">STUDENT PORTAL</a></li>
+            </ul>
+          </div>
+
+          <div class="nav_btn">
+            <button><a href="#">GET A QUOTE</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ---------- SIMPLE ABOUT US SECTION ---------- -->
+  <section id="about-us-simple" style="padding: 80px 0; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 3rem; margin-bottom: 40px; color: #0056b3; font-weight: 600;">About Metropolitan University</h2>
+      <p style="font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin: 0 auto; color: #555;">
+        Metropolitan University is a renowned institution in Sylhet, Bangladesh, offering undergraduate and graduate programs in various fields. The university is committed to providing practical training that prepares students for successful careers or further academic pursuits. Its comprehensive programs are designed to help students excel in their chosen fields and contribute effectively to the workforce or higher education.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- ACADEMIC CALENDAR ---------- -->
+  <section id="academic-calendar">
+    <div class="container">
+      <div class="academic-calendar-wrap" style="background-color: rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 10px;">
+        <h2>Academic Calendar</h2>
+        <div class="calendar-header">
+          <button id="prev-month-btn"><i class="fas fa-chevron-left"></i></button>
+          <h3 id="month-year"></h3>
+          <button id="next-month-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="calendar-grid" id="calendar-grid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- HOLIDAY MODAL ---------- -->
+  <div id="holiday-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h4 id="modal-holiday-name"></h4>
+      <p id="modal-holiday-date"></p>
+    </div>
+  </div>
+
+  <!-- ---------- FOOTER  ---------- -->
+  <footer class="footer" id="footer_id">
+    <div class="container">
+      <div class="footer_wrap">
+        <div class="footer_box">
+          <div class="footer_box_wrap box1">
+            <img src=".//src/images/logo.png" alt="">
+            <p class="text1">Get Start Career With Quality Learning From the Best University in Sylhet</p>
+            <p class="text2">Toll Free Customer Care</p>
+            <p class="text3">+(1) 123 456 7890</p>
+            <ul>
+              <li><a href="https://www.facebook.com/metropolitanuniversity/"><i class="fa-brands fa-square-facebook"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-square-youtube"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
+
+            </ul>
+          </div>
+          <div class="footer_box_wrap">
+            <h4>QUICK LINK’S</h4>
+            <hr>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Academics</a></li>
+              <li><a href="#">Student Life</a></li>
+              <li><a href="#">Faculty and Staff</a></li>
+              <li><a href="#">News and Events</a></li>
+            </ul>
+          </div>
+          <div class="footer_box_wrap">
+            <h4>OTHER'S</h4>
+            <hr>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Resource Center</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Instructor</a></li>
+              <li><a href="#">Become A Teacher</a></li>
+            </ul>
+          </div>
+          <div class="footer_box_wrap">
+            <h4>GET IN TOUCH!</h4>
+            <hr class="gt_in">
+            <p class="text1">Subscribe to our newsletter</p>
+            <p class="mail">Enter Your Email Here</p>
+            <button><a href="#">SUBSCRIBE NOW</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="last_line">
+    <div class="footer_down">
+      <p> &copy; Copyright 2024 By Metropolitan University. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="./src/js/main.js"></script>
+
+  <script src="https://kit.fontawesome.com/9c8a6404cf.js" crossorigin="anonymous">
+  </script>
+  <script src="./src/js/review-carousel js/owl.carousel.min.js"></script>
+  <script src="./src/js/review-carousel js/wow.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const monthYearElement = document.getElementById("month-year");
+        const calendarGrid = document.getElementById("calendar-grid");
+        const prevMonthBtn = document.getElementById("prev-month-btn");
+        const nextMonthBtn = document.getElementById("next-month-btn");
+        const holidayModal = document.getElementById("holiday-modal");
+        const modalHolidayName = document.getElementById("modal-holiday-name");
+        const modalHolidayDate = document.getElementById("modal-holiday-date");
+        const closeButton = document.querySelector(".close-button");
+
+        let currentDate = new Date();
+
+        const holidays = {
+            "2025-02-15": "Shab-e-Barat",
+            "2025-02-21": "Language Martyrs' Day",
+            "2025-03-26": "Independence Day",
+            "2025-03-28": "Shab-e-qadr",
+            "2025-03-29": "Eid ul-Fitr",
+            "2025-03-30": "Eid ul-Fitr",
+            "2025-03-31": "Eid ul-Fitr",
+            "2025-04-01": "Eid ul-Fitr",
+            "2025-04-02": "Eid ul-Fitr",
+            "2025-04-14": "Bengali New Year",
+            "2025-05-01": "May Day",
+            "2025-05-11": "Buddha Purnima/Vesak",
+            "2025-06-05": "Eid al-Adha",
+            "2025-06-06": "Eid al-Adha",
+            "2025-06-07": "Eid al-Adha",
+            "2025-06-08": "Eid al-Adha",
+            "2025-06-09": "Eid al-Adha",
+            "2025-06-10": "Eid al-Adha",
+            "2025-07-06": "Ashura",
+            "2025-08-16": "National Mourning Day / Shuba Janmashtami",
+            "2025-09-05": "Eid-e-Milad un-Nabi",
+            "2025-10-01": "Vijaya Dashami",
+            "2025-10-02": "Vijaya Dashami",
+            "2025-12-16": "Victory Day",
+            "2025-12-25": "Christmas Day",
+        };
+
+        function renderCalendar() {
+            const month = currentDate.getMonth();
+            const year = currentDate.getFullYear();
+
+            monthYearElement.textContent = `${currentDate.toLocaleString("default", { month: "long" })} ${year}`;
+
+            calendarGrid.innerHTML = '';
+
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            dayNames.forEach(day => {
+                const dayNameCell = document.createElement("div");
+                dayNameCell.classList.add("calendar-day", "day-name");
+                dayNameCell.textContent = day;
+                calendarGrid.appendChild(dayNameCell);
+            });
+
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                const emptyCell = document.createElement("div");
+                emptyCell.classList.add("calendar-day", "empty");
+                calendarGrid.appendChild(emptyCell);
+            }
+
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayCell = document.createElement("div");
+                dayCell.classList.add("calendar-day");
+                dayCell.textContent = i;
+
+                const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                if (holidays[dateString]) {
+                    dayCell.classList.add("holiday");
+                    dayCell.dataset.holiday = holidays[dateString];
+                    dayCell.addEventListener("click", () => {
+                        modalHolidayName.textContent = holidays[dateString];
+                        modalHolidayDate.textContent = new Date(dateString).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                        holidayModal.style.display = "block";
+                    });
+                }
+
+                if (i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear()) {
+                    dayCell.classList.add("today");
+                }
+
+                calendarGrid.appendChild(dayCell);
+            }
+        }
+
+        prevMonthBtn.addEventListener("click", () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        nextMonthBtn.addEventListener("click", () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        closeButton.addEventListener("click", () => {
+            holidayModal.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target == holidayModal) {
+                holidayModal.style.display = "none";
+            }
+        });
+
+        renderCalendar();
+    });
+  </script>
+</body>
+
+</html>
